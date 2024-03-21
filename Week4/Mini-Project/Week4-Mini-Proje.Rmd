@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+T.C. Çevre Şehircilik ve İklim Değişikliği bakanlığının ülke genelinde yaptığı hava kalitesi
+ölçümleri [https://sim.csb.gov.tr/Services/AirQuality](https://sim.csb.gov.tr/Services/AirQuality) adresinde bulunan web uygulamasında istasyon bazında görsellenebilmektedir. 
+
+Ham veriler ise [https://sim.csb.gov.tr/STN/STN_Report/StationDataDownloadNew](https://sim.csb.gov.tr/STN/STN_Report/StationDataDownloadNew) adresinden *Excel* formatında indirlebilmektedir. 
+
+## Egzersiz 1 - Veri ithali
+
+**Doğduğunuz şehre** ait olan **saatlik** hava kalitesi parametrelerini *Excel* formatında **doğduğunuz ay** için indirin. Tam bir aylık veri indirmeniz gerekmektedir.
+
+Örnek :
+
+- Mart ayında doğduysanız Mart 2023 verisi (Çünkü Mart 2024 bitmedi)
+- Aralık ayında doğduysanız Aralık 2023 verisi
+- Şubat ayında doğduysanız Şubat 2024 verisi
+
+```{r}
+# Excel dosyasındaki ham verileri data.frame formatında R'a ithal edin
+# havaK <- <kodu tamamla>
+```
+
+## Egzersiz 2 - Veri Kalite Kontrolü
+
+*havaK* adlı değişkendeki bütün verilerin **numric** tipte olmasını sağlayın. Eksik veriler NA olmalıdır.
+
+```{r}
+# havaK <- <kodu tamamla>
+
+```
+
+## Egzersiz 3 - Veri Görselleme
+
+*havaK* adlı değişkendeki bütün verilerin **numric** tipte olmasını sağlayın. Eksik veriler NA olmalıdır.
+
+```{r}
+# havaK <- <kodu tamamla>
+
+```
