@@ -51,7 +51,7 @@ Zaman değerlerini içeren sütunun isminin **Time** olmasını sağlayın
 ## Egzersiz 3 - Veri Görselleme
 *dygraphs* paketini kullanarak veri setinizde bulunan iki farklı parametreyi aynı grafik üzerinde iki değişik aks kullanarak (bkz örnek) çizin.
 
-![örnek grafik](graphic_example.png "İki akslı grafik örneği")
+![](graphic_example.png "İki akslı grafik örneği")
 
 
 ```{r}
