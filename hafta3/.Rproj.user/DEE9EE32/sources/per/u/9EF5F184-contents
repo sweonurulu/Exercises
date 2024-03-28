@@ -1,0 +1,8 @@
+
+
+df <-read_excel("C:\\Users\\Onur\\Desktop\\Veri Detayları21.03.2024 16_34_27.xlsx")
+
+print(df)
+
+df
+

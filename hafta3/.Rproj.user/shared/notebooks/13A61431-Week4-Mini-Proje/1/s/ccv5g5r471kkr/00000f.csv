@@ -1,0 +1,4 @@
+"0","# havaK <- <kodu tamamla>"
+"0","colnames(havaK)[1]<-'Time'"
+"0",""
+"0","havaK"

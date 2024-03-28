@@ -1,0 +1,7 @@
+"0","# Excel dosyasındaki ham verileri data.frame formatında R'a ithal edin
+# havaK <- <kodu tamamla>
+df<-read_excel(""C:\\Users\\Onur\\Desktop\\Veri Detayları21.03.2024 16_34_27.xlsx"")
+"
+"2","Error in read_excel(""C:\\Users\\Onur\\Desktop\\Veri Detayları21.03.2024 16_34_27.xlsx"") : 
+  ""read_excel"" fonksiyonu bulunamadı
+"
