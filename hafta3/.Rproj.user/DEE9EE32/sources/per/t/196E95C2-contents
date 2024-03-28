@@ -1,0 +1,69 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+T.C. Çevre Şehircilik ve İklim Değişikliği bakanlığının ülke genelinde yaptığı hava kalitesi ölçümleri <https://sim.csb.gov.tr/Services/AirQuality> adresinde bulunan web uygulamasında istasyon bazında görsellenebilmektedir.
+
+Ham veriler ise <https://sim.csb.gov.tr/STN/STN_Report/StationDataDownloadNew> adresinden *Excel* formatında indirlebilmektedir.
+
+## Egzersiz 1 - Veri ithali
+
+**Doğduğunuz şehre** ait olan **saatlik** hava kalitesi parametrelerini *Excel* formatında **doğduğunuz ay** için indirin. Tam bir aylık veri indirmeniz gerekmektedir.
+
+Örnek :
+
+-   Mart ayında doğduysanız Mart 2023 verisi (Çünkü Mart 2024 bitmedi)
+-   Aralık ayında doğduysanız Aralık 2023 verisi
+-   Şubat ayında doğduysanız Şubat 2024 verisi
+
+```{r}
+# Excel dosyasındaki ham verileri data.frame formatında R'a ithal edin
+# havaK <- <kodu tamamla>
+havaK <- read_xlsx("C:\\Users\\Onur\\Desktop\\Veri Detayları21.03.2024 16_34_27.xlsx",skip=1)
+havaK
+```
+
+## Egzersiz 2 - Veri Kalite Kontrolü
+
+*havaK* adlı değişkendeki bütün verilerin **numric** tipte olmasını sağlayın. Eksik veriler NA olmalıdır.
+
+```{r}
+# havaK <- <kodu tamamla>
+colnames(havaK)[1]<-'Time'
+havaK[-which(names(havaK) == "Time")] <- lapply(havaK[-which(names(havaK) == "Time")], function(x) {
+  # Sayısal olmayan karakterleri ve boşlukları temizle  
+  x <- gsub("[^0-9,]", "", x)
+  # Ondalık ayırıcıları noktaya çevir
+  x <- gsub(",", ".", x)
+  # Sayısal değerlere dönüştür
+  as.numeric(x)
+})
+
+head(havaK, 10)
+```
+
+## Egzersiz 3 - Veri Görselleme
+
+*havaK* adlı değişkendeki bütün verilerin **numric** tipte olmasını sağlayın. Eksik veriler NA olmalıdır.
+
+```{r}
+# havaK <- <kodu tamamla>
+# Rename columns to remove special characters
+colnames(havaK) <- c("Time", "PM10", "PM2.5", "SO2", "NO2", "NOX", "NO", "O3")
+
+# Convert 'Time' column to POSIXct format
+havaK$Time <- as.POSIXct(havaK$Time)
+
+# Convert other columns to numeric, replacing commas with dots
+havaK[-1] <- lapply(havaK[-1], function(x) as.numeric(gsub(",", ".", x)))
+
+# Plot the data
+plot_ly(havaK, x = ~Time) %>%
+  add_lines(y = ~PM10, name = "PM10 (µg/m³)", color = I("blue")) %>%
+  add_lines(y = ~PM2.5, name = "PM2.5 (µg/m³)", color = I("red")) %>%
+  layout(title = "PM10 and PM2.5 Values",
+         xaxis = list(title = "Time"),
+         yaxis = list(title = "Value (µg/m³)"))
+
+```
